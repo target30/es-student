@@ -14,6 +14,30 @@
 
 void log_version(void);
 void log_prefix(const char *level, const char *function, int line);
-#define LOG_ERR(...)  // уровень "err", проверка порога, подпись и printf
-#define LOG_INF(...)  // уровень "inf"
-#define LOG_DBG(...)  // уровень "dbg"
+#define LOG_ERR(...)                                \
+    do                                              \
+    {                                               \
+        if (LOG_LEVEL >= LOG_LEVELOG_LEVEL_DBGL_INF)             \
+        {                                           \
+            log_prefix("inf", __func__, __LINE__);  \
+            printf(__VA_ARGS__);                    \
+        }                                           \
+    } while (0)
+#define LOG_INF(...)                                \
+    do                                              \
+    {                                               \
+        if (LOG_LEVEL >= LOG_LEVEL_INF)             \
+        {                                           \
+            log_prefix("inf", __func__, __LINE__);  \
+            printf(__VA_ARGS__);                    \
+        }                                           \
+    } while (0)
+#define LOG_DBG(...)                                \
+    do                                              \
+    {                                               \
+        if (LOG_LEVEL >= LOG_LEVELOG_LEVEL_DBGL_INF)             \
+        {                                           \
+            log_prefix("inf", __func__, __LINE__);  \
+            printf(__VA_ARGS__);                    \
+        }                                           \
+    } while (0)
