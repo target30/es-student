@@ -5,7 +5,7 @@
 #include "hardware/regs/addressmap.h"
 #include "hardware/regs/sio.h"
 #include "led.h"
-
+#include "log.h"
 
 // объявляем константу вывода светодиода
 const uint BUTTON_PIN = 15;
@@ -37,6 +37,10 @@ void handle_command(int command)
     {
         led_set(false);
         printf("led %s\n", led_is_on() ? "on" : "off");
+    }
+    else if (command == 'v')
+    {
+        log_version();
     }
     else
     {
@@ -76,7 +80,7 @@ int main(){
         {
             continue;
         }
-
+        LOG_DBG("got %c\n", command);
         handle_command(command);
     }
 }
