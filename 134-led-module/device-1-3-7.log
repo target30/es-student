@@ -3,8 +3,12 @@
 устройство: 2e8a:000a
 серийный номер: 530328473106959C
 порт: COM8
-начало: 2026-10-20T00:31:45
-   0.000 --> i
-   0.019 <-- dbg main:83 got i
-   0.020 <-- err handle_command:47 unknown command: i
-итог: принято строк 2
+начало: 2026-10-20T00:38:25
+   0.001 --> i
+   0.012 <-- dbg main:86 got i
+   0.012 <-- project: 134-led-module
+   0.013 <-- repo: https://github.com/<������ ����������>/es-student
+   0.014 <-- board: pico
+   0.014 <-- serial: 530328473106959C
+   0.014 <-- chip: manufacturer 0x927, part 0x0002, revision 2
+итог: принято строк 6
