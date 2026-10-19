@@ -17,7 +17,7 @@ void log_prefix(const char *level, const char *function, int line);
 #define LOG_ERR(...)                                \
     do                                              \
     {                                               \
-        if (LOG_LEVEL >= LOG_LEVELOG_LEVEL_DBGL_INF)             \
+        if (LOG_LEVEL >= LOG_LEVEL_ERR)             \
         {                                           \
             log_prefix("inf", __func__, __LINE__);  \
             printf(__VA_ARGS__);                    \
@@ -35,7 +35,7 @@ void log_prefix(const char *level, const char *function, int line);
 #define LOG_DBG(...)                                \
     do                                              \
     {                                               \
-        if (LOG_LEVEL >= LOG_LEVELOG_LEVEL_DBGL_INF)             \
+        if (LOG_LEVEL >= LOG_LEVEL_DBG)             \
         {                                           \
             log_prefix("inf", __func__, __LINE__);  \
             printf(__VA_ARGS__);                    \

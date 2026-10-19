@@ -31,12 +31,12 @@ void handle_command(int command)
     if (command == 'e')
     {
         led_set(true);
-        printf("led %s\n", led_is_on() ? "on" : "off");
+        LOG_INF("led %s\n", led_is_on() ? "on" : "off");
     }
     else if (command == 'd')
     {
         led_set(false);
-        printf("led %s\n", led_is_on() ? "on" : "off");
+        LOG_INF("led %s\n", led_is_on() ? "on" : "off");
     }
     else if (command == 'v')
     {
@@ -44,7 +44,7 @@ void handle_command(int command)
     }
     else
     {
-        printf("unknown command: %c\n", command);
+        LOG_ERR("unknown command: %c\n", command);
     }
 }
 int main(){
@@ -69,7 +69,7 @@ int main(){
         if (previous == true && current == false)
         {
             led_toggle();
-            printf("led %s\n", led_is_on() ? "on" : "off");
+            LOG_INF("led %s\n", led_is_on() ? "on" : "off");
         }
 
         previous = current;
