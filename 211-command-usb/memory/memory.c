@@ -109,19 +109,29 @@ void mem_info(void)
            (unsigned)data_size,
            (unsigned)other_size);
 
-    printf("flash free:  %8u / %8u\n",
+    printf("\ntotal\n");
+
+    printf("flash image %8u = boot2 %8u + text %8u"
+           " + data %8u + other %8u\n",
+           (unsigned)image_size,
+           (unsigned)boot2_size,
+           (unsigned)text_size,
+           (unsigned)data_size,
+           (unsigned)other_size);
+
+    printf("flash free  %8u / %8u\n",
            (unsigned)(flash_end - image_end),
            (unsigned)(flash_end - flash_start));
 
-    printf("ram used:    %8u = data %8u + bss %8u\n",
+    printf("ram used    %8u = data %8u + bss %8u\n",
            (unsigned)(data_size + bss_size),
            (unsigned)data_size,
            (unsigned)bss_size);
 
-    printf("ram free:    %8u = heap %8u + stack %8u\n",
-           (unsigned)(heap_size + stack_size),
+    printf("ram free    %8u heap + %8u stack = %8u total\n",
            (unsigned)heap_size,
-           (unsigned)stack_size);
+           (unsigned)stack_size,
+           (unsigned)(heap_size + stack_size));
 }
 
 void fw_info(void)

@@ -3,44 +3,44 @@
 устройство: 2e8a:000a
 серийный номер: 530328473106959C
 порт: COM8
-начало: 2026-11-01T22:36:43
+начало: 2026-11-01T23:25:45
    0.000 --> fw_info
-   0.156 <-- fw_info
-   0.156 <-- dbg read_line:113 got fw_info
-   0.160 <-- object           address    value
-   0.160 <-- main             0x10000329 0xb5f0
-   0.160 <-- fw_info          0x1000069d 0xb5f0
-   0.161 <-- project          0x1000772c 211-command-usb
-   0.162 <-- repo             0x1000774c https://github.com/<������ ����������>/es-student
-   0.162 <-- board            0x1000778c pico
-   0.163 <-- data_variable    0x20000f40 104
-   0.163 <-- bss_variable     0x20001f0c 4
-   0.163 <-- stack_variable   0x20041f7c 1946
-   0.164 <-- heap_variable    0x20002408 1951
-   2.201 --> fw_info
-   2.359 <-- fw_info
-   2.360 <-- dbg read_line:113 got fw_info
-   2.360 <-- object           address    value
-   2.361 <-- main             0x10000329 0xb5f0
-   2.361 <-- fw_info          0x1000069d 0xb5f0
-   2.362 <-- project          0x1000772c 211-command-usb
-   2.363 <-- repo             0x1000774c https://github.com/<������ ����������>/es-student
-   2.363 <-- board            0x1000778c pico
-   2.363 <-- data_variable    0x20000f40 105
-   2.364 <-- bss_variable     0x20001f0c 5
-   2.364 <-- stack_variable   0x20041f7c 1946
-   2.365 <-- heap_variable    0x20002408 1951
-   4.398 --> fw_info
-   4.541 <-- fw_info
-   4.542 <-- dbg read_line:113 got fw_info
-   4.543 <-- object           address    value
-   4.543 <-- main             0x10000329 0xb5f0
-   4.544 <-- fw_info          0x1000069d 0xb5f0
-   4.544 <-- project          0x1000772c 211-command-usb
-   4.545 <-- repo             0x1000774c https://github.com/<������ ����������>/es-student
-   4.545 <-- board            0x1000778c pico
-   4.546 <-- data_variable    0x20000f40 106
-   4.546 <-- bss_variable     0x20001f0c 6
-   4.546 <-- stack_variable   0x20041f7c 1946
-   4.547 <-- heap_variable    0x20002408 1951
+   0.148 <-- fw_info
+   0.149 <-- dbg read_line:113 got fw_info
+   0.150 <-- object           address    value
+   0.150 <-- main             0x10000329 0xb5f0
+   0.151 <-- fw_info          0x1000069d 0xb5f0
+   0.151 <-- project          0x1000775c 211-command-usb
+   0.152 <-- repo             0x1000777c https://github.com/<������ ����������>/es-student
+   0.153 <-- board            0x100077bc pico
+   0.153 <-- data_variable    0x20000f40 101
+   0.153 <-- bss_variable     0x20001f0c 1
+   0.154 <-- stack_variable   0x20041f7c 1946
+   0.154 <-- heap_variable    0x20002408 1951
+   2.177 --> fw_info
+   2.331 <-- fw_info
+   2.332 <-- dbg read_line:113 got fw_info
+   2.332 <-- object           address    value
+   2.333 <-- main             0x10000329 0xb5f0
+   2.333 <-- fw_info          0x1000069d 0xb5f0
+   2.334 <-- project          0x1000775c 211-command-usb
+   2.334 <-- repo             0x1000777c https://github.com/<������ ����������>/es-student
+   2.335 <-- board            0x100077bc pico
+   2.335 <-- data_variable    0x20000f40 102
+   2.336 <-- bss_variable     0x20001f0c 2
+   2.336 <-- stack_variable   0x20041f7c 1946
+   2.337 <-- heap_variable    0x20002408 1951
+   4.378 --> fw_info
+   4.533 <-- fw_info
+   4.534 <-- dbg read_line:113 got fw_info
+   4.535 <-- object           address    value
+   4.535 <-- main             0x10000329 0xb5f0
+   4.535 <-- fw_info          0x1000069d 0xb5f0
+   4.536 <-- project          0x1000775c 211-command-usb
+   4.537 <-- repo             0x1000777c https://github.com/<������ ����������>/es-student
+   4.537 <-- board            0x100077bc pico
+   4.537 <-- data_variable    0x20000f40 103
+   4.537 <-- bss_variable     0x20001f0c 3
+   4.538 <-- stack_variable   0x20041f7c 1946
+   4.538 <-- heap_variable    0x20002408 1951
 итог: отправлено команд 3, принято строк 36
