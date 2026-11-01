@@ -2,9 +2,15 @@
 
 #include <stdint.h>
 #include <stdio.h>
-
+#include <stdlib.h>
+#include "command.h"
 #include "pico/stdlib.h"
 #include "hardware/regs/addressmap.h"
+#include "device.h"
+int main(void);
+
+uint32_t data_variable = 100;
+uint32_t bss_variable;
 
 // Символы определены в скрипте компоновщика.
 // Используем только их адреса, значения по этим адресам не читаем.
@@ -116,4 +122,99 @@ void mem_info(void)
            (unsigned)(heap_size + stack_size),
            (unsigned)heap_size,
            (unsigned)stack_size);
+}
+
+void fw_info(void)
+{
+    // Увеличиваем при каждом вызове.
+    ++data_variable;
+    ++bss_variable;
+
+    // Указатели на функции содержат признак Thumb.
+    const uintptr_t main_address = (uintptr_t)main;
+    const uintptr_t fw_info_address = (uintptr_t)fw_info;
+
+    // Для чтения кода убираем признак Thumb.
+    const uint16_t *main_code =
+        (const uint16_t *)(main_address & ~(uintptr_t)1);
+
+    const uint16_t *fw_info_code =
+        (const uint16_t *)(fw_info_address & ~(uintptr_t)1);
+
+    // Локальная переменная — на стеке.
+    uint32_t stack_variable = 1946;
+
+    // Выделяем блок в куче.
+    uint32_t *heap_variable = malloc(sizeof(uint32_t));
+
+    if (heap_variable != NULL)
+    {
+        *heap_variable = 1951;
+    }
+
+    printf("\n%-16s %-10s %s\n", "object", "address", "value");
+
+    // Адрес функции печатаем с признаком Thumb.
+    // Первые два байта читаем по адресу без этого признака.
+    printf("%-16s 0x%08x 0x%04x\n",
+           "main",
+           (unsigned)main_address,
+           (unsigned)main_code[0]);
+
+    printf("%-16s 0x%08x 0x%04x\n",
+           "fw_info",
+           (unsigned)fw_info_address,
+           (unsigned)fw_info_code[0]);
+
+    // Здесь будут строки массива commands и его обработчиков.
+
+    // Строки паспорта: адрес строки и её содержимое.
+    printf("%-16s 0x%08x %s\n",
+           "project",
+           (unsigned)(uintptr_t)DEVICE_PROJECT,
+           DEVICE_PROJECT);
+
+    printf("%-16s 0x%08x %s\n",
+           "repo",
+           (unsigned)(uintptr_t)DEVICE_REPO,
+           DEVICE_REPO);
+
+    printf("%-16s 0x%08x %s\n",
+           "board",
+           (unsigned)(uintptr_t)DEVICE_BOARD,
+           DEVICE_BOARD);
+
+    // Глобальные переменные: адрес и текущее значение.
+    printf("%-16s 0x%08x %u\n",
+           "data_variable",
+           (unsigned)(uintptr_t)&data_variable,
+           (unsigned)data_variable);
+
+    printf("%-16s 0x%08x %u\n",
+           "bss_variable",
+           (unsigned)(uintptr_t)&bss_variable,
+           (unsigned)bss_variable);
+
+    // Стек: адрес локальной переменной.
+    printf("%-16s 0x%08x %u\n",
+           "stack_variable",
+           (unsigned)(uintptr_t)&stack_variable,
+           (unsigned)stack_variable);
+
+    // Куча: адрес выделенного блока, а не адрес указателя.
+    if (heap_variable != NULL)
+    {
+        printf("%-16s 0x%08x %u\n",
+               "heap_variable",
+               (unsigned)(uintptr_t)heap_variable,
+               (unsigned)*heap_variable);
+    }
+    else
+    {
+        printf("%-16s %-10s %s\n",
+               "heap_variable", "NULL", "malloc failed");
+    }
+
+    // Возвращаем выделенную память. free(NULL) тоже допустим.
+    free(heap_variable);
 }
