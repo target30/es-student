@@ -146,10 +146,10 @@ void fw_info(void)
 
     // Для чтения кода убираем признак Thumb.
     const uint16_t *main_code =
-        (const uint16_t *)(main_address & ~(uintptr_t)1);
+        (const uint16_t *)(main_address & ~1u);
 
     const uint16_t *fw_info_code =
-        (const uint16_t *)(fw_info_address & ~(uintptr_t)1);
+        (const uint16_t *)(fw_info_address & ~1u);
 
     // Локальная переменная — на стеке.
     uint32_t stack_variable = 1946;
@@ -176,21 +176,31 @@ void fw_info(void)
            (unsigned)fw_info_address,
            (unsigned)fw_info_code[0]);
 
-    // Здесь будут строки массива commands и его обработчиков.
+    printf("%-16s 0x%08x %u entries\n",
+           "commands",
+           (unsigned)(uintptr_t)commands,
+           (unsigned)command_count);
+
+    for (uint i = 0; i < command_count; ++i)
+    {
+        printf("  %-14s 0x%08x\n",
+               commands[i].name,
+               (unsigned)(uintptr_t)commands[i].handler);
+    }
 
     // Строки паспорта: адрес строки и её содержимое.
     printf("%-16s 0x%08x %s\n",
-           "project",
+           "DEVICE_PROJECT",
            (unsigned)(uintptr_t)DEVICE_PROJECT,
            DEVICE_PROJECT);
 
     printf("%-16s 0x%08x %s\n",
-           "repo",
+           "DEVICE_REPO",
            (unsigned)(uintptr_t)DEVICE_REPO,
            DEVICE_REPO);
 
     printf("%-16s 0x%08x %s\n",
-           "board",
+           "DEVICE_BOARD",
            (unsigned)(uintptr_t)DEVICE_BOARD,
            DEVICE_BOARD);
 
